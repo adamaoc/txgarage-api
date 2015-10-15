@@ -6,12 +6,11 @@ class Clicks extends Controller
 	public function index($id = null)
   {
     $clicksModel = $this->model('ClicksModel');
-//    if($_GET) {
-      //$clicks = $clicksModel->fetch($_GET['campaign']);
-  //  }elseif($id) {
-	if($id) {    
-  $clicks = $clicksModel->fetch($id);
-    }else{
+   	if($_GET['campaign']) {
+      $clicks = $clicksModel->fetch($_GET['campaign']);
+   	}elseif($id) {
+  		$clicks = $clicksModel->fetch($id);
+  	}else{
       $clicks = $clicksModel->getAll();
     }
     $this->api($clicks, 'clicks');
