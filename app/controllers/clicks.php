@@ -3,7 +3,7 @@
 class Clicks extends Controller
 {
 
-	public function index($id)
+	public function index($id = null)
   {
     $clicksModel = $this->model('clicksModel');
     if($_GET) {

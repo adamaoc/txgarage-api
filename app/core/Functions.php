@@ -1,5 +1,9 @@
 <?php
 
+function escape($string) {
+	return htmlentities($string);
+}
+
 function getComponent($file, $data = array()) {
 
 	$docroot = $_SERVER['DOCUMENT_ROOT'];
@@ -26,7 +30,7 @@ function getHeader($options = array()) {
 	return getShared("header");
 }
 
-function getFooter($options = array()) { 
+function getFooter($options = array()) {
 
 	return getShared("footer");
 }

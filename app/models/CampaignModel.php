@@ -42,10 +42,10 @@ class CampaignModel
 	public function postCampaign($payload)
 	{
 		$data = array();
-		$data['slug'] = $payload['slug'];
-		$data['name'] = $payload['name'];
-		$data['startDate'] = $payload['startDate'];
-		$data['endDate'] = $payload['endDate'];
+		$data['slug'] = escape($payload['slug']);
+		$data['name'] = escape($payload['name']);
+		$data['startDate'] = escape($payload['startDate']);
+		$data['endDate'] = escape($payload['endDate']);
 
 		$this->_db = DB::getInstance();
 		$this->_db->insert('campaigns', $data);
