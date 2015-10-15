@@ -1,15 +1,5 @@
 <?php
 
-// Create a global configuration
-// $GLOBALS['config'] = array(
-// 	'mysql' => array(
-// 		'host' 		=> 'localhost',
-// 		'username' 	=> 'root',
-// 		'password' 	=> 'root',
-// 		'db' 		=> 'stats'
-// 	)
-// );
-
 $config = $_SERVER['DOCUMENT_ROOT'] . '/app/config.php';
 if(file_exists($config)) {
 	require_once $config;
