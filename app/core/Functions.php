@@ -1,9 +1,5 @@
 <?php
 
-function escape($string) {
-	return htmlentities($string);
-}
-
 function getComponent($file, $data = array()) {
 
 	$docroot = $_SERVER['DOCUMENT_ROOT'];

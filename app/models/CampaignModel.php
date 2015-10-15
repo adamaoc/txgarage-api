@@ -22,7 +22,6 @@ class CampaignModel
 		$data = $data->results();
 
 		$newData = array();
-		// print_r($data);
 
 		foreach ($data as $key => $row) {
 			$rowClicks = $this->_db->get('clicks', array('campaign', '=', $row->slug));
@@ -32,20 +31,15 @@ class CampaignModel
 		}
 
 		return $newData;
-		// return array(
-	  // 	array("id"=>"titan2015", "slug"=>"titan2015", "name"=>"Nissan Titan 2015","startDate"=>"07/01/15","endDate"=>"12/31/15", "totals"=>"20"),
-	  // 	array("id"=>"googleAds", "slug"=>"googleAds", "name"=>"Google Ads","startDate"=>"01/01/15","endDate"=>"12/31/15", "totals"=>"20"),
-	  // 	array("id"=>"tawa2015", "slug"=>"tawa2015", "name"=>"TAWA 2015","startDate"=>"01/01/15","endDate"=>"12/31/15", "totals"=>"20"),
-	  // );
 	}
 
 	public function postCampaign($payload)
 	{
 		$data = array();
-		$data['slug'] = escape($payload['slug']);
-		$data['name'] = escape($payload['name']);
-		$data['startDate'] = escape($payload['startDate']);
-		$data['endDate'] = escape($payload['endDate']);
+		$data['slug'] = htmlentities($payload['slug']);
+		$data['name'] = htmlentities($payload['name']);
+		$data['startDate'] = htmlentities($payload['startDate']);
+		$data['endDate'] = htmlentities($payload['endDate']);
 
 		$this->_db = DB::getInstance();
 		$this->_db->insert('campaigns', $data);
@@ -53,36 +47,4 @@ class CampaignModel
 		return $data;
 	}
 
-  public function allClicks($campaign = null)
-  {
-    $allClicks = array(
-        array("campaign"=>"titan2015","clicks"=> array(
-          array("date"=> "06/30/15",
-          "page"=> "sponsors",
-          "timestamp"=> "1435665503677"),
-          array("date"=> "06/30/15",
-          "page"=> "sponsors",
-          "timestamp"=> "1435665503677"),
-        )),
-        array("campaign"=>"googleAds","clicks"=> array(
-          array("date"=> "06/30/15",
-          "page"=> "homepage",
-          "timestamp"=> "1435665503677"),
-          array("date"=> "06/30/15",
-          "page"=> "homepage",
-          "timestamp"=> "1435665503677"),
-        ))
-    );
-
-    if($campaign) {
-      foreach ($allClicks as $click) {
-  			if($click['campaign'] == $campaign) {
-  				return $click;
-  			}
-  		}
-    }else{
-      return $allClicks;
-    }
-
-  }
 }
