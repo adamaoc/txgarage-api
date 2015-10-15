@@ -5,7 +5,7 @@ class Clicks extends Controller
 
 	public function index($id = null)
   {
-    $clicksModel = $this->model('clicksModel');
+    $clicksModel = $this->model('ClicksModel');
     if($_GET) {
       $clicks = $clicksModel->fetch($_GET['campaign']);
     }elseif($id) {
