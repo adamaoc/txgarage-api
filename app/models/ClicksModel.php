@@ -4,7 +4,7 @@ class ClicksModel
 {
   private $_db;
 
-  public function fetch($id)
+  public function fetch($id = null)
   {
     $this->_db = DB::getInstance();
     $data = $this->_db->get('clicks', array('campaign', '=', $id));
@@ -18,7 +18,7 @@ class ClicksModel
 		$data = $data->results();
 		return $data;
   }
-  public function postClick($payload)
+  public function postClick($payload = null)
 	{
 		$data = array();
 		$data['campaign'] = escape($payload['campaign']);
