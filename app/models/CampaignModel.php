@@ -9,7 +9,7 @@ class CampaignModel
 	public function fetch($id)
 	{
 		$this->_db = DB::getInstance();
-		$data = $this->_db->get('campaigns', array('id', '=', $id));
+		$data = $this->_db->get('campaigns', array('slug', '=', $id));
 		$data = $data->results();
 
 		return $data;
