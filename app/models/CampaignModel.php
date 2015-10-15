@@ -11,8 +11,13 @@ class CampaignModel
 		$this->_db = DB::getInstance();
 		$data = $this->_db->get('campaigns', array('slug', '=', $id));
 		$data = $data->results();
+		$data = $data[0];
 
-		return $data;
+		$clicks = $this->_db->get('clicks', array('campaign', '=', $id));
+		$clicks = $clicks->results();
+		$data->totals = count($clicks);
+
+		return array($data);
 	}
 
 	public function getAll()
