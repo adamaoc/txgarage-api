@@ -21,9 +21,9 @@ class ClicksModel
   public function postClick($payload = null)
 	{
 		$data = array();
-		$data['campaign'] = escape($payload['campaign']);
-		$data['datetime'] = escape($payload['datetime']);
-		$data['page'] = escape($payload['page']);
+		$data['campaign'] = htmlentities($payload['campaign']);
+		$data['datetime'] = htmlentities($payload['datetime']);
+		$data['page'] = htmlentities($payload['page']);
 
 		$this->_db = DB::getInstance();
 		$this->_db->insert('clicks', $data);
