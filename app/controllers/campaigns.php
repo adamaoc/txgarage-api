@@ -8,7 +8,7 @@ class Campaigns extends Controller
     $campModel = $this->model('CampaignModel');
     if($_GET['campaign']){
       $campaign = $campModel->fetch($_GET['campaign']);
-      $this->api($campaign, 'campaign');
+      $this->api($campaign, 'campaign')
     }elseif($id) {
   		$campaign = $campModel->fetch($id);
   		$this->api($campaign, 'campaign');

@@ -11,10 +11,15 @@ class Controller
 	{
 		header("HTTP/1.1 200 OK");
 		header("Content-Type:application/json");
+		// header("Content-Type: application/vnd.api+jso");
 		header("Access-Control-Allow-Origin: *");
-		$response['status'] = "200";
-		$response['status_message'] = "OK";
-		$response[$name] = $data;
+		// $response['status'] = "200";
+		// $response['status_message'] = "OK";
+		if($name) {
+			$response[$name] = $data;
+		}else{
+			$response = $data;
+		}
 		$json_responce = json_encode($response);
 		echo $json_responce;
 	}
