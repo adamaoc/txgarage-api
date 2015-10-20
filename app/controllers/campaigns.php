@@ -24,7 +24,7 @@ class Campaigns extends Controller
     // echo "stuff";
     $campaigns = $campModel->postCampaign($_POST);
 
-    $this->api($campaigns, 'campaigns');
+    $this->api($campaigns, 'campaigns', 201);
   }
 
 }
