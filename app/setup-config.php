@@ -7,7 +7,13 @@ $GLOBALS['config'] = array(
 		'username' 	=> 'root',
 		'password' 	=> 'root',
 		'db' 		=> 'stats'
-	)
+	),
+  'twitter' => array(
+    'token' => '*',
+    'token_secret' => '*',
+    'consumer_key' => '*',
+    'consumer_secret' => '*'
+  )
 );
 
 ?>

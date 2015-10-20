@@ -20,4 +20,11 @@ class Home extends Controller
 		echo "Updating the app...";
 	}
 
+	public function twitter()
+	{
+		echo "twitter ";
+		$twitter = new Twitter;
+		echo $twitter->getFollowerCount();
+	}
+
 }
