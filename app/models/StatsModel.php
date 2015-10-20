@@ -12,9 +12,9 @@ class StatsModel
   public function getAll()
 	{
     $stats = array(
-      array("id"=>1004, "title"=>"Facebook", "slug"=>"facebook", "stat"=>"982", "color"=>"blue", "link"=>"http://facebook.com/txgarage"),
+      array("id"=>1004, "title"=>"Facebook", "slug"=>"facebook", "stat"=>866, "color"=>"blue", "link"=>"http://facebook.com/txgarage"),
       array("id"=>1005, "title"=>"Twitter", "slug"=>"twitter", "stat"=>$this->_twitterFollowers, "color"=>"light-blue","link"=>"http://twitter.com/txgarage"),
-      array("id"=>1006, "title"=>"Instagram", "slug"=>"instagram", "stat"=>"428", "color"=>"green", "link"=>"http://instagram.com/txgarage")
+      array("id"=>1006, "title"=>"Instagram", "slug"=>"instagram", "stat"=>483, "color"=>"green", "link"=>"http://instagram.com/txgarage")
     );
 		return $stats;
 	}
