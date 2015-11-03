@@ -15,7 +15,7 @@ class Home extends Controller
 		$setup = new Setup;
 	}
 
-	public function update()
+	public function update($version)
 	{
 		echo "Updating the app...";
 		echo $version;
