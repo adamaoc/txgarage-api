@@ -18,6 +18,12 @@ class Home extends Controller
 	public function update()
 	{
 		echo "Updating the app...";
+		echo $version;
+		echo "<br />";
+		if($version == 'v2') {
+			echo "entering v2 update<br>";
+			require_once($_SERVER['DOCUMENT_ROOT'].'/app/updates/update-v2.php');
+		}
 	}
 
 	public function twitter()
