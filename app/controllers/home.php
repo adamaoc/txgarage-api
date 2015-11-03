@@ -25,6 +25,10 @@ class Home extends Controller
 			require_once($_SERVER['DOCUMENT_ROOT'].'/app/updates/update-v2.php');
 		}
 	}
+	public function tests()
+	{
+		echo date('l jS \of F Y h:i:s A');
+	}
 
 	public function twitter()
 	{
