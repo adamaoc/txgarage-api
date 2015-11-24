@@ -10,7 +10,7 @@ $data = array();
 $data['name'] = 'Subscribers';
 $data['stat'] = 84;
 $data2['name'] = 'Monthly Sent';
-$data2['stat'] = 2;
+$data2['stat'] = 1;
 
 $db->insert('newsletter', $data);
 $db->insert('newsletter', $data2);
@@ -20,3 +20,14 @@ $db->insert('newsletter', $data2);
 
 //$this->_db->insert('clicks', $data);
 //
+
+// $db = DB::getInstance();
+// $db->query('ALTER TABLE clicks ADD clickDate date');
+
+// $fixDatetime = "ALTER TABLE `clicks` CHANGE `datetime` `datetime` DATETIME NOT NULL";
+// $fixClickDate = "ALTER TABLE `clicks` CHANGE `clickDate` `clickDate` VARCHAR(201) CHARACTER";
+// $db->query($fixDatetime);
+// $db->query($fixClickDate);
+
+//ALTER TABLE `clicks` CHANGE `datetime` `datetime` DATETIME NOT NULL;
+//ALTER TABLE `clicks` CHANGE `clickDate` `clickDate` VARCHAR(201) CHARACTER;
