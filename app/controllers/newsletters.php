@@ -1,6 +1,6 @@
 <?php
 
-class Newsletter extends Controller
+class Newsletters extends Controller
 {
 
   public function index()
