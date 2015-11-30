@@ -16,9 +16,10 @@ class Views extends Controller
                           'aug' => 10340,
                           'sep' => 10928,
                           'oct' => 11045,
-                          'nov' => 7012,
+                          'nov' => 8356,
                           'dec' => 0);
     $stats = array(
+      'id' => 1001,
       'labels'  => $monthArr,
       'datasets' => array(
         array(
