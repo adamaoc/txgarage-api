@@ -6,7 +6,7 @@ class Views extends Controller
   public function index()
   {
     $monthArr = array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec');
-    $statsArr2016 = array('jan' => 11652,
+    $statsArr2016 = array('jan' => 15138,
                           'feb' => 10524,
                           'mar' => 9862,
                           'apr' => 10010,
