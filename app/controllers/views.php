@@ -7,8 +7,8 @@ class Views extends Controller
   {
     $monthArr = array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec');
     $statsArr2016 = array('jan' => 15138,
-                          'feb' => 10524,
-                          'mar' => 9862,
+                          'feb' => 18064,
+                          'mar' => 18439,
                           'apr' => 10010,
                           'may' => 9952,
                           'jun' => 9956,
