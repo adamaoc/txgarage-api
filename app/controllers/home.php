@@ -24,6 +24,10 @@ class Home extends Controller
 			echo "entering v2 update<br>";
 			require_once($_SERVER['DOCUMENT_ROOT'].'/app/updates/update-v2.php');
 		}
+		if($version == 'v3') {
+			echo "entering v3 update<br>";
+			require_once($_SERVER['DOCUMENT_ROOT'].'/app/updates/update-v3.php');
+		}
 	}
 
 	public function twitter()

@@ -21,9 +21,7 @@ class Campaigns extends Controller
   public function post()
   {
     $campModel = $this->model('CampaignModel');
-    // echo "stuff";
     $campaigns = $campModel->postCampaign($_POST);
-
     $this->api($campaigns, 'campaigns', 201);
   }
 

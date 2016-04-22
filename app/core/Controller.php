@@ -17,6 +17,7 @@ class Controller
 		header("Content-Type:application/json");
 		// header("Content-Type: application/vnd.api+jso");
 		header("Access-Control-Allow-Origin: *");
+		header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Key");
 		// $response['status'] = "200";
 		// $response['status_message'] = "OK";
 		if($name) {

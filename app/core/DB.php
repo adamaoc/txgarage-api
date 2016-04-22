@@ -104,14 +104,14 @@ class DB {
 		$x		= 1;
 
 		foreach($fields as $name => $value) {
-			$set .= "{$name} = ?";
+			$set .= "{$name} = {$value}";
 			if($x < count($fields)) {
 				$set .= ', ';
 			}
 			$x++;
 		}
 
-		$sql = "UPDATE flex_user SET {$set} WHERE id = {$id}";
+		$sql = "UPDATE {$table} SET {$set} WHERE id = {$id}";
 
 		if(!$this->query($sql, $fields)->error()) {
 			return true;

@@ -5,34 +5,19 @@ class Views extends Controller
 
   public function index()
   {
-    $monthArr = array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec');
-    $statsArr2016 = array('jan' => 15138,
-                          'feb' => 18064,
-                          'mar' => 18439,
-                          'apr' => 10010,
-                          'may' => 9952,
-                          'jun' => 9956,
-                          'jul' => 9614,
-                          'aug' => 10340,
-                          'sep' => 10928,
-                          'oct' => 11045,
-                          'nov' => 8546,
-                          'dec' => 25008);
-    $stats = array(
-      'id' => 1001,
-      'labels'  => $monthArr,
-      'datasets' => array(
-        array(
-          'label' => 'Views Per Month',
-          'fillColor' => "rgba(220,220,220,0.8)",
-          'strokeColor' => "rgba(220,220,220,0.8)",
-          'highlightFill' => "rgba(45,124,185,0.75)",
-          'highlightStroke' => "rgba(220,220,220,1)",
-          'data' => $statsArr2016
-        )
-      )
-    );
+    $viewsModel = $this->model('ViewsModel');
+    $stats = $viewsModel->getAll();
 		$this->api($stats, 'views');
+  }
+
+  public function post()
+  {
+    $json = @file_get_contents('php://input');
+    $array = json_decode($json, true);
+    $viewsModel = $this->model('ViewsModel');
+    $views = $viewsModel->postViews($array);
+
+    $this->api($views, 'views', 201);
   }
 
 }
