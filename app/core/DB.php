@@ -25,13 +25,13 @@ class DB {
 	}
 
 	public function query($sql, $params = array()) {
-
 		$this->_error = false;
 
 		if($this->_query = $this->_pdo->prepare($sql)) {
 			$x = 1;
 			if(count($params)) {
 				foreach($params as $param) {
+
 					$this->_query->bindValue($x, $param);
 					$x++;
 				}
@@ -104,7 +104,7 @@ class DB {
 		$x		= 1;
 
 		foreach($fields as $name => $value) {
-			$set .= "{$name} = {$value}";
+			$set .= "`{$name}` = '{$value}'";
 			if($x < count($fields)) {
 				$set .= ', ';
 			}
