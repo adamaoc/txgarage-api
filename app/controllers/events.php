@@ -3,10 +3,10 @@
 class Events extends Controller
 {
 
-  public function index($id)
+  public function index($id = 0)
   {
     $eventsModel = $this->model('EventsModel');
-    if($id) {
+    if($id !== 0) {
       $event = $eventsModel->getEvent($id);
       $this->api($event, 'event');
     } else {
