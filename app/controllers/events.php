@@ -17,6 +17,9 @@ class Events extends Controller
 
   public function post()
   {
+    header("Access-Control-Allow-Origin: *");
+		header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Key");
+
     $json = @file_get_contents('php://input');
     $array = json_decode($json, true);
 
@@ -28,6 +31,8 @@ class Events extends Controller
 
   public function update()
   {
+    header("Access-Control-Allow-Origin: *");
+		header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Key");
     $json = @file_get_contents('php://input');
     $array = json_decode($json, true);
 
@@ -39,6 +44,8 @@ class Events extends Controller
 
   public function delete()
   {
+    header("Access-Control-Allow-Origin: *");
+		header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Key");
     $json = @file_get_contents('php://input');
     $array = json_decode($json, true);
 
