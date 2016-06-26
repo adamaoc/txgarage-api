@@ -15,6 +15,13 @@ class Events extends Controller
     }
   }
 
+  public function all()
+  {
+    $eventsModel = $this->model('EventsModel');
+    $events = $eventsModel->getAll();
+    $this->api($events, 'events');
+  }
+
   public function range($start, $end)
   {
     $eventsModel = $this->model('EventsModel');
