@@ -10,8 +10,40 @@ class Events extends Controller
       $event = $eventsModel->getEvent($id);
       $this->api($event, 'event');
     } else {
-      $events = $eventsModel->getAll();
+      $events = $eventsModel->getLatest();
   		$this->api($events, 'events');
+    }
+  }
+
+  public function range($start, $end)
+  {
+    $eventsModel = $this->model('eventsModel');
+    $events = $eventsModel->getDateRange($start, $end);
+    $this->api($events, 'events');
+  }
+
+  public function majorcity($majorCity)
+  {
+    $eventsModel = $this->model('eventsModel');
+    $events = $eventsModel->getByMajorCity($majorCity);
+    $this->api($events, 'events');
+  }
+
+  public function city($city)
+  {
+    $eventsModel = $this->model('eventsModel');
+    $events = $eventsModel->getByCity($city);
+    $this->api($events, 'events');
+  }
+
+  public function query()
+  {
+    if (count($_GET) > 1) {
+      $eventsModel = $this->model('eventsModel');
+      $events = $eventsModel->buildQuery($_GET);
+      $this->api($events, 'events');
+    } else {
+      echo "You must provide the correct query";
     }
   }
 

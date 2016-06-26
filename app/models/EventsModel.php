@@ -7,7 +7,44 @@ class EventsModel
 	public function getAll()
 	{
 		$this->_db = DB::getInstance();
-		$data = $this->_db->query('SELECT * FROM events');
+		$data = $this->_db->query('SELECT * FROM events ORDER BY `startDate`');
+		$data = $data->results();
+		return $data;
+	}
+
+	public function getLatest()
+	{
+		$this->_db = DB::getInstance();
+		$query = "SELECT * FROM `events` WHERE `startDate` >= curDate() ORDER BY `startDate` LIMIT 20";
+		$data = $this->_db->query($query);
+		$data = $data->results();
+		return $data;
+	}
+
+	public function getByCity($city)
+	{
+		$this->_db = DB::getInstance();
+		$query = "SELECT * FROM `events` WHERE `citySlug` = '".$city."' AND `startDate` >= curDate() ORDER BY `startDate` LIMIT 20";
+		echo $query;
+		$data = $this->_db->query($query);
+		$data = $data->results();
+		return $data;
+	}
+
+	public function getByMajorCity($majorCity)
+	{
+		$this->_db = DB::getInstance();
+		$query = "SELECT * FROM `events` WHERE `closeMetro` = '".$majorCity."' AND `startDate` >= curDate() ORDER BY `startDate` LIMIT 20";
+		$data = $this->_db->query($query);
+		$data = $data->results();
+		return $data;
+	}
+
+	public function getDateRange($startDate, $endDate)
+	{
+		$this->_db = DB::getInstance();
+		$query = "SELECT * FROM `events` WHERE `startDate` BETWEEN '". $startDate ."' AND '". $endDate ."' ORDER BY `startDate` LIMIT 20";
+		$data = $this->_db->query($query);
 		$data = $data->results();
 		return $data;
 	}
@@ -20,6 +57,48 @@ class EventsModel
 
     return $data->results();
   }
+
+	public function buildQuery($getQuery)
+	{
+		if ($getQuery['city'])
+		{
+			$city = $getQuery['city'];
+		}
+		if ($getQuery['metro'])
+		{
+			$metro = $getQuery['metro'];
+		}
+		if ($getQuery['start'])
+		{
+			$start = $getQuery['start'];
+		}
+		if ($getQuery['end'])
+		{
+			$end = $getQuery['end'];
+		}
+		$query = $this->_builder($city, $metro, $start, $end);
+		$this->_db = DB::getInstance();
+		$data = $this->_db->query($query);
+		$data = $data->results();
+		return $data;
+	}
+
+	private function _builder($city = false, $metro = false, $start = false, $end = false)
+	{
+		if ($city && $start && $end) {
+			return "SELECT * FROM `events` WHERE `startDate` BETWEEN '". $start ."' AND '". $end ."' AND `citySlug` = '".$city."' ORDER BY `startDate` LIMIT 20";
+		}
+		if ($city && $start) {
+			return "SELECT * FROM `events` WHERE `startDate` >= '". $start ."' AND `citySlug` = '".$city."' ORDER BY `startDate` LIMIT 20";
+		}
+		if ($metro && $start && $end) {
+			return "SELECT * FROM `events` WHERE `closeMetro` = '".$metro."' AND `startDate` BETWEEN '". $start ."' AND '". $end ."' ORDER BY `startDate` LIMIT 20";
+		}
+		if ($metro && $start) {
+			return "SELECT * FROM `events` WHERE `startDate` >= '". $start ."' AND `closeMetro` = '".$metro."' ORDER BY `startDate` LIMIT 20";
+		}
+		return false;
+	}
 
 	public function postEvent($payload)
 	{
