@@ -15,7 +15,7 @@ class EventsModel
 	public function getLatest()
 	{
 		$this->_db = DB::getInstance();
-		$query = "SELECT * FROM `events` WHERE `startDate` >= curDate() ORDER BY `startDate` LIMIT 20";
+		$query = "SELECT * FROM `events` WHERE `startDate` >= curDate() AND `status` = 1 ORDER BY `startDate` LIMIT 20";
 		$data = $this->_db->query($query);
 		$data = $data->results();
 		return $data;
@@ -24,8 +24,7 @@ class EventsModel
 	public function getByCity($city)
 	{
 		$this->_db = DB::getInstance();
-		$query = "SELECT * FROM `events` WHERE `citySlug` = '".$city."' AND `startDate` >= curDate() ORDER BY `startDate` LIMIT 20";
-		echo $query;
+		$query = "SELECT * FROM `events` WHERE `citySlug` = '".$city."' AND `startDate` >= curDate() AND `status` = 1 ORDER BY `startDate` LIMIT 20";
 		$data = $this->_db->query($query);
 		$data = $data->results();
 		return $data;
@@ -34,7 +33,7 @@ class EventsModel
 	public function getByMajorCity($majorCity)
 	{
 		$this->_db = DB::getInstance();
-		$query = "SELECT * FROM `events` WHERE `closeMetro` = '".$majorCity."' AND `startDate` >= curDate() ORDER BY `startDate` LIMIT 20";
+		$query = "SELECT * FROM `events` WHERE `closeMetro` = '".$majorCity."' AND `startDate` >= curDate() AND `status` = 1 ORDER BY `startDate` LIMIT 20";
 		$data = $this->_db->query($query);
 		$data = $data->results();
 		return $data;
@@ -43,7 +42,7 @@ class EventsModel
 	public function getDateRange($startDate, $endDate)
 	{
 		$this->_db = DB::getInstance();
-		$query = "SELECT * FROM `events` WHERE `startDate` BETWEEN '". $startDate ."' AND '". $endDate ."' ORDER BY `startDate` LIMIT 20";
+		$query = "SELECT * FROM `events` WHERE `startDate` BETWEEN '". $startDate ."' AND '". $endDate ."' AND `status` = 1 ORDER BY `startDate` LIMIT 20";
 		$data = $this->_db->query($query);
 		$data = $data->results();
 		return $data;
@@ -86,16 +85,16 @@ class EventsModel
 	private function _builder($city = false, $metro = false, $start = false, $end = false)
 	{
 		if ($city && $start && $end) {
-			return "SELECT * FROM `events` WHERE `startDate` BETWEEN '". $start ."' AND '". $end ."' AND `citySlug` = '".$city."' ORDER BY `startDate` LIMIT 20";
+			return "SELECT * FROM `events` WHERE `startDate` BETWEEN '". $start ."' AND '". $end ."' AND `citySlug` = '".$city."' AND `status` = 1 ORDER BY `startDate` LIMIT 20";
 		}
 		if ($city && $start) {
-			return "SELECT * FROM `events` WHERE `startDate` >= '". $start ."' AND `citySlug` = '".$city."' ORDER BY `startDate` LIMIT 20";
+			return "SELECT * FROM `events` WHERE `startDate` >= '". $start ."' AND `citySlug` = '".$city."' AND `status` = 1 ORDER BY `startDate` LIMIT 20";
 		}
 		if ($metro && $start && $end) {
-			return "SELECT * FROM `events` WHERE `closeMetro` = '".$metro."' AND `startDate` BETWEEN '". $start ."' AND '". $end ."' ORDER BY `startDate` LIMIT 20";
+			return "SELECT * FROM `events` WHERE `closeMetro` = '".$metro."' AND `startDate` BETWEEN '". $start ."' AND '". $end ."' AND `status` = 1 ORDER BY `startDate` LIMIT 20";
 		}
 		if ($metro && $start) {
-			return "SELECT * FROM `events` WHERE `startDate` >= '". $start ."' AND `closeMetro` = '".$metro."' ORDER BY `startDate` LIMIT 20";
+			return "SELECT * FROM `events` WHERE `startDate` >= '". $start ."' AND `closeMetro` = '".$metro."' AND `status` = 1 ORDER BY `startDate` LIMIT 20";
 		}
 		return false;
 	}
