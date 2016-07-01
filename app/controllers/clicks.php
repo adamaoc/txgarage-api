@@ -23,5 +23,18 @@ class Clicks extends Controller
 
     $this->api($click, 'clicks');
   }
+	public function postjs()
+	{
+		header("Access-Control-Allow-Origin: *");
+		header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Key");
+
+    $json = @file_get_contents('php://input');
+    $array = json_decode($json, true);
+
+    $clicksModel = $this->model('ClicksModel');
+    $click = $clicksModel->postClick($array);
+
+    $this->api($click, 'clicks', 201);
+	}
 
 }
