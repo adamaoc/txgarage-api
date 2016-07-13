@@ -4,13 +4,13 @@ class StatsModel
 {
   private $_twitterFollowers = null;
   private $_facebookLikes = null;
-  private $_instgramFollows = null;
+  private $_instgramFollows = 784;
 
   public function __construct()
   {
       $this->_getTwitter();
       $this->_getFacebook();
-      $this->_getInstagram();
+      // $this->_getInstagram(); need to fix api...
   }
 
   public function getAll()
