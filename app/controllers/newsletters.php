@@ -32,5 +32,19 @@ class Newsletters extends Controller
 
     $this->api($newsletter, 'newsletter', 201);
   }
+  
+  public function update()
+  {
+    header("Access-Control-Allow-Origin: *");
+		header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Key");
+
+    $json = @file_get_contents('php://input');
+    $array = json_decode($json, true);
+
+    $newsletterModel = $this->model('NewsletterModel');
+    $newsletter = $newsletterModel->updateStats($array);
+
+    $this->api($newsletter, 'newsletter', 201);
+  }
 
 }

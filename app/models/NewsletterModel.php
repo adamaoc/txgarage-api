@@ -12,6 +12,7 @@ class NewsletterModel
 		$data = $data->results();
 		return $data;
 	}
+
   public function getRecent()
   {
     $this->_db = DB::getInstance();
@@ -29,9 +30,33 @@ class NewsletterModel
 
     return $newsletter;
   }
+
+  public function updateStats($payload)
+  {
+    $stats = $payload['data'];
+    $this->_db = DB::getInstance();
+    $updatedDate = date('Y-m-d');
+    $prevStats = $this->_db->query('SELECT * FROM newsletters ORDER BY ID DESC LIMIT 1');
+    $prevStats = $prevStats->results();
+    $statID = $prevStats[0]->id;
+
+    $updatedStats = array();
+    foreach ($stats as $key => $value) {
+      if ($key != 'id') {
+        $updatedStats[$key] = $stats[$key];
+      }
+    }
+    $updateStats['updated'] = $updatedDate;
+
+    $this->_db = DB::getInstance();
+    $this->_db->update('newsletters', $statID, $updatedStats);
+
+    $newsletterStats = $this->_db->query('SELECT * FROM newsletters ORDER BY ID DESC LIMIT 1');
+    return $newsletterStats->results();
+  }
 }
 
-// JSON example // 
+// JSON example //
 // {
 //     "data": {
 //         "subscribers": 85,
