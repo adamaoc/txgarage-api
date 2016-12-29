@@ -18,8 +18,9 @@ class Home extends Controller
 	public function update($version)
 	{
 		echo "Updating the app...";
-		echo $version;
+		// echo $version;
 		echo "<br />";
+		require_once($_SERVER['DOCUMENT_ROOT']."/app/updates/review-schedule.php");
 		// if($version == 'v2') {
 		// 	echo "entering v2 update<br>";
 		// 	require_once($_SERVER['DOCUMENT_ROOT'].'/app/updates/update-v2.php');
@@ -28,10 +29,10 @@ class Home extends Controller
 		// 	echo "entering v3 update<br>";
 		// 	require_once($_SERVER['DOCUMENT_ROOT'].'/app/updates/update-v3.php');
 		// }
-		if($version == 'events') {
-			echo "adding events data!";
-			require_once($_SERVER['DOCUMENT_ROOT'].'/app/updates/events-api-update.php');
-		}
+		// if($version == 'events') {
+		// 	echo "adding events data!";
+		// 	require_once($_SERVER['DOCUMENT_ROOT'].'/app/updates/events-api-update.php');
+		// }
 	}
 
 	public function twitter()

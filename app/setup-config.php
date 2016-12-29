@@ -6,7 +6,7 @@ $GLOBALS['config'] = array(
 		'host' 		=> 'localhost',
 		'username' 	=> 'root',
 		'password' 	=> 'root',
-		'db' 		=> 'stats'
+		'db' 		=> 'txgapi'
 	),
   'twitter' => array(
     'token' => '*',
