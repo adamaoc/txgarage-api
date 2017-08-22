@@ -21,7 +21,7 @@ class StatsModel
       array("id"=>1004, "title"=>"Facebook", "slug"=>"facebook", "stat"=>$this->_facebookLikes, "color"=>"blue", "link"=>"http://facebook.com/txgarage"),
       array("id"=>1005, "title"=>"Twitter", "slug"=>"twitter", "stat"=>$this->_twitterFollowers, "color"=>"light-blue","link"=>"http://twitter.com/txgarage"),
       array("id"=>1006, "title"=>"Instagram", "slug"=>"instagram", "stat"=>$this->_instgramFollows, "color"=>"green", "link"=>"http://instagram.com/txgarage"),
-      array("id"=>1006, "title"=>"YouTube", "slug"=>"youtube", "stat"=>$this->_youtubeNumbers, "color"=>"red", "link"=>"http://youtube.com/user/texasgarage")
+      array("id"=>1007, "title"=>"YouTube", "slug"=>"youtube", "stat"=>$this->_youtubeNumbers, "color"=>"red", "link"=>"http://youtube.com/user/texasgarage")
     );
 		return $stats;
 	}
