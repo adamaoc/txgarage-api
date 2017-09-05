@@ -12,7 +12,7 @@ class StatsModel
       $this->_getTwitter();
       $this->_getFacebook();
       $this->_getYouTubeSubscribers();
-      // $this->_getInstagram(); need to fix api...
+      $this->_getInstagram();
   }
 
   public function getAll()
@@ -41,10 +41,11 @@ class StatsModel
 
   private function _getInstagram()
   {
-    $data = file_get_contents('https://api.instagram.com/v1/users/1648915262/?client_id='.Config::get('instagram/client_id'));
-    $data = json_decode($data);
-    $this->_instgramFollows = $data->data->counts->followed_by;
+    $url = 'https://www.instagram.com/txgarage/?__a=1';
+    $apiContents = json_decode(file_get_contents( $url ));
+    $this->_instgramFollows = $apiContents->user->followed_by->count;
   }
+  
   private function _getYouTubeSubscribers()
   {
     // Change channelid value to match your YouTube channel ID
