@@ -45,7 +45,7 @@ class StatsModel
     $apiContents = json_decode(file_get_contents( $url ));
     $this->_instgramFollows = $apiContents->user->followed_by->count;
   }
-  
+
   private function _getYouTubeSubscribers()
   {
     // Change channelid value to match your YouTube channel ID
@@ -60,7 +60,14 @@ class StatsModel
     if ( $found_subscribers && isset( $matches[1] ) ) {
         $this->_youtubeNumbers = intval( $matches[1] );
     } else {
-      $this->_youtubeNumbers = 'error';
+      $dom = new DOMDocument;
+      $dom->loadHTML($button_html);
+      $spans = $dom->getElementsByTagName('span');
+      if (isset($spans[5]->textContent)) {
+        $this->_youtubeNumbers = $spans[5]->textContent;
+      } else {
+        $this->_youtubeNumbers = 'error';
+      }
     }
   }
 
