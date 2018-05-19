@@ -3,14 +3,14 @@
 class StatsModel
 {
   private $_twitterFollowers = null;
-  private $_facebookLikes = null;
+  private $_facebookLikes = 925;
   private $_instgramFollows = 755;
   private $_youtubeNumbers = null;
 
   public function __construct()
   {
       $this->_getTwitter();
-      $this->_getFacebook();
+      // $this->_getFacebook();
       $this->_getYouTubeSubscribers();
       // $this->_getInstagram();
   }
@@ -34,9 +34,9 @@ class StatsModel
 
   private function _getFacebook()
   {
-    $data = file_get_contents('https://graph.facebook.com/txgarage/?fields=likes&access_token='.Config::get('facebook/access_token'));
-    $data = json_decode($data);
-    $this->_facebookLikes = $data->likes;
+    // $data = file_get_contents('https://graph.facebook.com/txgarage/?fields=likes&access_token='.Config::get('facebook/access_token'));
+    // $data = json_decode($data);
+    // $this->_facebookLikes = $data->likes;
   }
 
   private function _getInstagram()
