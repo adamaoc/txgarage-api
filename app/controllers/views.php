@@ -9,8 +9,8 @@ class Views extends Controller
     // $stats = $viewsModel->getAll();
     $stats = file_get_contents("http://assets.txgarage.com/webviews.json");
     $stats = json_decode($stats);
-    
-		$this->api($stats, 'views');
+
+		$this->api($stats, '');
   }
 
   public function post()
