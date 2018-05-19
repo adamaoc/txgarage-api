@@ -12,7 +12,7 @@ class StatsModel
       $this->_getTwitter();
       $this->_getFacebook();
       $this->_getYouTubeSubscribers();
-      $this->_getInstagram();
+      // $this->_getInstagram();
   }
 
   public function getAll()
@@ -41,9 +41,9 @@ class StatsModel
 
   private function _getInstagram()
   {
-    $url = 'https://www.instagram.com/txgarage/?__a=1';
-    $apiContents = json_decode(file_get_contents( $url ));
-    $this->_instgramFollows = $apiContents->user->followed_by->count;
+    // $url = 'https://www.instagram.com/txgarage/?__a=1';
+    // $apiContents = json_decode(file_get_contents( $url ));
+    // $this->_instgramFollows = $apiContents->user->followed_by->count;
   }
 
   private function _getYouTubeSubscribers()
