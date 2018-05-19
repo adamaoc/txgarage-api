@@ -5,9 +5,12 @@ class YTViews extends Controller
 
   public function index()
   {
-    $viewsModel = $this->model('ViewsModel');
-    $stats = $viewsModel->getYouTubeViews();
-		$this->api($stats, 'views');
+    // $viewsModel = $this->model('ViewsModel');
+    // $stats = $viewsModel->getYouTubeViews();
+    $stats = file_get_contents("http://assets.txgarage.com/ytviews.json");
+    $stats = json_decode($stats);
+
+		$this->api($stats, '');
   }
 
   public function post()
