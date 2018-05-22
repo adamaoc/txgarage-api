@@ -9,7 +9,7 @@ class Stats extends Controller
 //     $stats = $statsModel->getAll();
     $stats = file_get_contents("http://assets.txgarage.com/webstats.json");
     $stats = json_decode($stats);
-    $this->api($stats, 'stats');
+    $this->api($stats, '');
   }
 
 }
