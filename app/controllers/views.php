@@ -7,7 +7,7 @@ class Views extends Controller
   {
     // $viewsModel = $this->model('ViewsModel');
     // $stats = $viewsModel->getAll();
-    $stats = file_get_contents("http://assets.txgarage.com/webviews.json");
+    $stats = file_get_contents("https://ampnet.sfo2.cdn.digitaloceanspaces.com/Stats/webviews.json");
     $stats = json_decode($stats);
 
 		$this->api($stats, '');
