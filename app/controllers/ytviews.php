@@ -7,7 +7,7 @@ class YTViews extends Controller
   {
     // $viewsModel = $this->model('ViewsModel');
     // $stats = $viewsModel->getYouTubeViews();
-    $stats = file_get_contents("http://assets.txgarage.com/ytviews.json");
+    $stats = file_get_contents("https://ampnet.sfo2.cdn.digitaloceanspaces.com/Stats/ytviews.json");
     $stats = json_decode($stats);
 
 		$this->api($stats, '');
